@@ -73,7 +73,7 @@ export function MainTabNavigator() {
         >
           <StatusBar style={dark ? "light" : "dark"} />
           <View
-            style={{ flex: 1 }}
+            style={{ flex: 1, paddingBottom: 64 + Math.max(insets.bottom, 10) }}
             key={route ? route.name + routes.length : tab}
           >
             {renderRoute()}
@@ -83,8 +83,8 @@ export function MainTabNavigator() {
               styles.nav,
               {
                 paddingBottom: Math.max(insets.bottom, 10),
-                backgroundColor: dark ? c.ink : c.canvas,
-                borderTopColor: dark ? tokens.colors.darkLine : c.line,
+                backgroundColor: "rgba(25, 25, 29, 0.92)",
+                borderTopColor: "rgba(255, 255, 255, 0.22)",
               },
             ]}
           >
@@ -105,24 +105,13 @@ export function MainTabNavigator() {
               >
                 <Icon
                   name={tab === t.name ? t.selected : t.icon}
-                  color={
-                    tab === t.name
-                      ? c.brand
-                      : dark
-                        ? tokens.colors.mutedLine
-                        : c.textSecondary
-                  }
+                  color={tab === t.name ? c.brand : "#E4E4EA"}
                   size={23}
                 />
                 <AppText
                   size={10}
                   style={{
-                    color:
-                      tab === t.name
-                        ? c.brand
-                        : dark
-                          ? tokens.colors.mutedLine
-                          : c.textSecondary,
+                    color: tab === t.name ? c.brand : "#E4E4EA",
                   }}
                 >
                   {t.name}
@@ -143,16 +132,6 @@ export function MainTabNavigator() {
             </Pressable>
           )}
         </View>
-        {Platform.OS === "web" && (
-          <View style={styles.caption}>
-            <AppText size={13} muted>
-              SHOPAFLO · LIVE SHOPPING, IN THE MOMENT
-            </AppText>
-            <AppText size={11} muted>
-              Expo prototype · All interactions are simulated
-            </AppText>
-          </View>
-        )}
       </View>
     </AppContext.Provider>
   );
@@ -177,7 +156,18 @@ const styles = StyleSheet.create({
       default: {},
     }),
   },
-  nav: { flexDirection: "row", paddingTop: 10, borderTopWidth: 1 },
+  nav: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    flexDirection: "row",
+    paddingTop: 10,
+    borderTopWidth: 1,
+    borderTopLeftRadius: 14,
+    borderTopRightRadius: 14,
+    ...Platform.select({ web: { backdropFilter: "blur(20px)" }, default: {} }),
+  },
   tab: {
     flex: 1,
     alignItems: "center",
@@ -203,5 +193,4 @@ const styles = StyleSheet.create({
     padding: 18,
     elevation: 8,
   },
-  caption: { alignItems: "center", gap: 5, padding: 14 },
 });
