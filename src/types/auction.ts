@@ -1,14 +1,5 @@
-export type AuctionState =
-  | "upcoming"
-  | "preparing"
-  | "preview"
-  | "live"
-  | "leading"
-  | "outbid"
-  | "finalCountdown"
-  | "won"
-  | "lost"
-  | "ended";
+import type { AUCTION_STATES } from "../constants/auction";
+export type AuctionState = (typeof AUCTION_STATES)[number];
 export type Auction = {
   state: AuctionState;
   current: number;

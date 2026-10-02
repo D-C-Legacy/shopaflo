@@ -5,3 +5,4 @@ web-build/
 *.tsbuildinfo
 .env*
 output/browser-profile/
+docs/

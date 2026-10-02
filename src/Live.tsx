@@ -1,4 +1,5 @@
 import { liveComments } from "./data/chat";
+import { BID_INCREMENTS, LIVE_ISSUES } from "./constants/auction";
 import * as tokens from "./theme";
 import { LiveProductPanel } from "./components/live/LiveProductPanel";
 import { LiveActionRail } from "./components/live/LiveActionRail";
@@ -237,7 +238,7 @@ export function Live({ streamId }: { streamId: string }) {
           keyboardType="numeric"
         />
         <View style={[s.row, { gap: 6 }]}>
-          {[50, 100, 250, 500].map((v) => (
+          {BID_INCREMENTS.map((v) => (
             <Pressable
               key={v}
               style={[
@@ -394,14 +395,7 @@ export function Live({ streamId }: { streamId: string }) {
         onClose={() => setSheet("")}
       >
         <AppText muted>Try the local auction and connection states.</AppText>
-        {[
-          "Bid rejected",
-          "Reconnecting…",
-          "Stream ended",
-          "Product withdrawn",
-          "Auction cancelled",
-          "Verification required",
-        ].map((v) => (
+        {LIVE_ISSUES.map((v) => (
           <Button
             key={v}
             secondary

@@ -1,6 +1,6 @@
 # ShopaFlo
 
-Expo SDK 55 / React Native / TypeScript UI-only live-shopping prototype. Includes 38 full-screen UI templates and nine custom hooks. All prices are USD; authentication, auctions, checkout, camera and messaging are simulated locally.
+Expo SDK 55 / React Native / TypeScript UI-only live-shopping prototype. 
 
 ## Run
 

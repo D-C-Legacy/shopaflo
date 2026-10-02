@@ -1,4 +1,5 @@
 import { ROUTES } from "../../constants/routes";
+import { SEARCH_TABS } from "../../constants/categories";
 import React, { useState } from "react";
 import { View } from "react-native";
 import {
@@ -53,11 +54,7 @@ export function Search() {
         </>
       ) : (
         <>
-          <Chips
-            items={["Top", ROUTES.LIVE, "Products", "Sellers"]}
-            value={tab}
-            onChange={setTab}
-          />
+          <Chips items={SEARCH_TABS} value={tab} onChange={setTab} />
           <Chips
             items={["All", "Live Now", "Under $250", "New", "Free shipping"]}
             value={filter}

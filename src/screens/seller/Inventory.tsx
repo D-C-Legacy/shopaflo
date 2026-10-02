@@ -1,4 +1,5 @@
 import * as tokens from "../../theme";
+import { INVENTORY_FILTERS } from "../../constants/categories";
 import { ROUTES } from "../../constants/routes";
 import React, { useState } from "react";
 import { View, Pressable } from "react-native";
@@ -28,11 +29,7 @@ export function Inventory() {
         icon="add"
         onPress={() => app.navigate(ROUTES.LISTING)}
       />
-      <Chips
-        items={["All", "Active", "Draft", "Sold", "Archived"]}
-        value={filter}
-        onChange={setFilter}
-      />
+      <Chips items={INVENTORY_FILTERS} value={filter} onChange={setFilter} />
       {items.length ? (
         items.map((p) => (
           <Pressable
